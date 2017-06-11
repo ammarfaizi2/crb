@@ -1,5 +1,14 @@
 {
+    "name": "root/crbt",
     "require": {
+        "ammarfaizi2/ai": "^0.0.1",
         "ammarfaizi2/bot-telegram": "*"
-    }
+    },
+    "authors": [
+        {
+            "name": "Ammar Faizi",
+            "email": "ammarfaizi2@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
 }

@@ -11,9 +11,9 @@ $ai	  = new AI();
 
 /* // Debugging
 $telg->webhook_input = json_decode('{
-    "update_id": 235258797,
+    "update_id": 235258818,
     "message": {
-        "message_id": 15151,
+        "message_id": 4077,
         "from": {
             "id": 243692601,
             "first_name": "Ammar",
@@ -22,14 +22,12 @@ $telg->webhook_input = json_decode('{
             "language_code": "en-US"
         },
         "chat": {
-            "id": 243692601,
-            "first_name": "Ammar",
-            "last_name": "Faizi",
-            "username": "ammarfaizi2",
-            "type": "private"
+            "id": -1001114640699,
+            "title": "Nocturnal Indonesia",
+            "type": "supergroup"
         },
-        "date": 1497173119,
-        "text": "halsadfasdo"
+        "date": 1497175526,
+        "text": "halo"
     }
 }',1);
 
@@ -38,7 +36,7 @@ $telg->webhook_input = json_decode('{
 $tel = $telg->webhook_input;
 if (isset($tel['message']['text'])) {
 	$actor = $tel['message']['from']['first_name'] . (isset($tel['message']['from']['last_name']) ? " ".$tel['message']['from']['last_name']:"");
-	$from = $tel['message']['from']['id'];
+	$from = $tel['message']['chat']['id'];
 	$ai->prepare($tel['message']['text'], $actor);
 	if($ai->execute()){
 		$rep = $ai->fetch_reply();

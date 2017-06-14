@@ -34,6 +34,7 @@ $telg->webhook_input = json_decode('{
 // */
 
 $tel = $telg->webhook_input;
+
 if (isset($tel['message']['text'])) {
 	$actor = $tel['message']['from']['first_name'] . (isset($tel['message']['from']['last_name']) ? " ".$tel['message']['from']['last_name']:"");
 	$from = $tel['message']['chat']['id'];
@@ -50,6 +51,6 @@ if (isset($rep)) {
 		print $telg->sendMessage($rep[1], $from, $tel['message']['message_id']);
 		print $telg->sendPhoto($rep[0], $from);
 	} else {
-		print $telg->sendMessage($rep, $from, $tel['message']['message_id']);
+		print $telg->sendMessage(str_replace(array("<br />","/home/webhooks/telegram/crayner/data/ai/php_virtual/tmp"),array("\n","/tmp/php_virtual"),$rep), $from, $tel['message']['message_id']);
 	}
 }

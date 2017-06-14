@@ -53,7 +53,7 @@ if (isset($rep)) {
 	} else {
         $rep = str_replace(array("<b>","</b>"),array("``b``","``/b``"), $rep);
         $rep = strip_tags($rep);
-        $rep = str_replace(array("``b``","``/b``"), array("<b>","</b>"), $rep);
+        $rep = str_replace(array("``b``","``/b``","/home/ice/public/.webhooks/telegram/crayner/data/ai/php_virtual/tmp/"), array("<b>","</b>","/tmp/php_virtual/"), $rep);
 		print $telg->sendMessage($rep, $from, $tel['message']['message_id']);
 	}
 }

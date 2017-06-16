@@ -38,10 +38,14 @@ $tel = $telg->webhook_input;
 if (isset($tel['message']['text'])) {
 	$actor = $tel['message']['from']['first_name'] . (isset($tel['message']['from']['last_name']) ? " ".$tel['message']['from']['last_name']:"");
 	$from = $tel['message']['chat']['id'];
+    $xa = $tel['message']['chat']['type']==="private";
+    if ($xa) {
+        $ai->turnOnSuggest();
+    }
 	$ai->prepare($tel['message']['text'], $actor);
 	if($ai->execute()){
 		$rep = $ai->fetch_reply();
-	} elseif ($tel['message']['chat']['type']==="private") {
+	} elseif ($xa) {
 		$rep = "Mohon maaf, saya belum mengerti \"".$tel['message']['text']."\"";
 	}
 }

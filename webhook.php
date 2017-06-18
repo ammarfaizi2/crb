@@ -30,11 +30,53 @@ $telg->webhook_input = json_decode('{
         "text": "halo"
     }
 }',1);
-
 // */
+
+$telg->webhook_input = json_decode('{
+    "update_id": 235259207,
+    "message": {
+        "message_id": 105,
+        "from": {
+            "id": 243692601,
+            "first_name": "Ammar",
+            "last_name": "Faizi",
+            "username": "ammarfaizi2",
+            "language_code": "en-US"
+        },
+        "chat": {
+            "id": -1001143029479,
+            "title": "a",
+            "type": "supergroup"
+        },
+        "date": 1497766548,
+        "new_chat_participant": {
+            "id": 308645660,
+            "first_name": "Kang IceTea",
+            "username": "kang_icetea_bot"
+        },
+        "new_chat_member": {
+            "id": 308645660,
+            "first_name": "Kang IceTea",
+            "username": "kang_icetea_bot"
+        },
+        "new_chat_members": [
+            {
+                "id": 308645660,
+                "first_name": "Kang IceTea",
+                "username": "kang_icetea_bot"
+            }
+        ]
+    }
+}
+',1);
 
 $tel = $telg->webhook_input;
 
+if (isset($tel['message']['new_chat_member'])) {
+    $name = $tel['message']['new_chat_member']['first_name'].(isset($tel['message']['new_chat_member']['last_name']) ? " ".$tel['message']['new_chat_member']['last_name'] : "");
+    $nama_grup = $tel['message']['chat']['title'];
+    $telg->sendMessage("Hai {$name}, selamat bergabung di {$nama_grup}, jangan lupa memperkenalkan diri :D", $tel['message']['chat']['id'], $tel['message']['message_id']);
+} else
 if (isset($tel['message']['text'])) {
 	$actor = $tel['message']['from']['first_name'] . (isset($tel['message']['from']['last_name']) ? " ".$tel['message']['from']['last_name']:"");
 	$from = $tel['message']['chat']['id'];

@@ -31,7 +31,7 @@ $telg->webhook_input = json_decode('{
     }
 }',1);
 // */
-
+/*
 $telg->webhook_input = json_decode('{
     "update_id": 235259207,
     "message": {
@@ -68,7 +68,7 @@ $telg->webhook_input = json_decode('{
         ]
     }
 }
-',1);
+',1);*/
 
 $tel = $telg->webhook_input;
 
